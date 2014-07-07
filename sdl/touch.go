@@ -16,7 +16,7 @@ type Finger struct {
 }
 
 func (t TouchID) c() C.SDL_TouchID {
-    return C.SDL_TouchID(t)
+	return C.SDL_TouchID(t)
 }
 
 func GetNumTouchDevices() int {

@@ -42,7 +42,7 @@ const (
 const (
 	AUDIO_STOPPED = C.SDL_AUDIO_STOPPED
 	AUDIO_PLAYING = C.SDL_AUDIO_PLAYING
-	AUDIO_PAUSED = C.SDL_AUDIO_PAUSED
+	AUDIO_PAUSED  = C.SDL_AUDIO_PAUSED
 )
 
 const MIX_MAXVOLUME = C.SDL_MIX_MAXVOLUME
@@ -80,19 +80,19 @@ type AudioCVT struct {
 }
 
 func (fmt AudioFormat) c() C.SDL_AudioFormat {
-    return C.SDL_AudioFormat(fmt)
+	return C.SDL_AudioFormat(fmt)
 }
 
 func (id AudioDeviceID) c() C.SDL_AudioDeviceID {
-    return C.SDL_AudioDeviceID(id)
+	return C.SDL_AudioDeviceID(id)
 }
 
 func (as *AudioSpec) cptr() *C.SDL_AudioSpec {
-    return (*C.SDL_AudioSpec)(unsafe.Pointer(as))
+	return (*C.SDL_AudioSpec)(unsafe.Pointer(as))
 }
 
 func (cvt *AudioCVT) cptr() *C.SDL_AudioCVT {
-    return (*C.SDL_AudioCVT)(unsafe.Pointer(cvt))
+	return (*C.SDL_AudioCVT)(unsafe.Pointer(cvt))
 }
 
 func (format AudioFormat) BitSize() uint8 {

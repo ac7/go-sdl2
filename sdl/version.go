@@ -17,7 +17,7 @@ type Version struct {
 }
 
 func (v *Version) cptr() *C.SDL_version {
-    return (*C.SDL_version)(unsafe.Pointer(v))
+	return (*C.SDL_version)(unsafe.Pointer(v))
 }
 
 func VERSION(version *Version) {

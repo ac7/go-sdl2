@@ -76,9 +76,9 @@ const (
 )
 
 const (
-	ADDEVENT = C.SDL_ADDEVENT
+	ADDEVENT  = C.SDL_ADDEVENT
 	PEEKEVENT = C.SDL_PEEKEVENT
-	GETEVENT = C.SDL_PEEKEVENT
+	GETEVENT  = C.SDL_PEEKEVENT
 )
 
 const (
@@ -337,7 +337,7 @@ type EventFilter func(userdata interface{}, event Event) int
 type EventAction C.SDL_eventaction
 
 func (action EventAction) c() C.SDL_eventaction {
-    return C.SDL_eventaction(action)
+	return C.SDL_eventaction(action)
 }
 
 func PumpEvents() {

@@ -104,8 +104,8 @@ func (dm *DisplayMode) cptr() *C.SDL_DisplayMode {
 	return (*C.SDL_DisplayMode)(unsafe.Pointer(dm))
 }
 
-func (attr GLattr) c() C.SDL_GLattr{
-    return C.SDL_GLattr(attr)
+func (attr GLattr) c() C.SDL_GLattr {
+	return C.SDL_GLattr(attr)
 }
 
 func GetNumVideoDisplays() int {
@@ -139,7 +139,7 @@ func GetNumDisplayModes(displayIndex int) int {
 }
 
 func GetDisplayBounds(displayIndex int, rect *Rect) int {
-    return int(C.SDL_GetDisplayBounds(C.int(displayIndex), rect.cptr()))
+	return int(C.SDL_GetDisplayBounds(C.int(displayIndex), rect.cptr()))
 }
 
 func GetDisplayMode(displayIndex int, modeIndex int, mode *DisplayMode) int {

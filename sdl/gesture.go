@@ -6,7 +6,7 @@ import "C"
 type GestureID C.SDL_GestureID
 
 func (g GestureID) c() C.SDL_GestureID {
-    return C.SDL_GestureID(g)
+	return C.SDL_GestureID(g)
 }
 
 func RecordGesture(t TouchID) int {

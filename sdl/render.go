@@ -143,7 +143,6 @@ func (texture *Texture) GetAlphaMod() (alpha uint8, status int) {
 	return alpha, status
 }
 
-
 func (texture *Texture) SetBlendMode(bm BlendMode) int {
 	return int(C.SDL_SetTextureBlendMode(texture.cptr(), bm.c()))
 }
