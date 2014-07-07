@@ -91,8 +91,8 @@ const (
 type Event interface{}
 
 type CEvent struct {
-	Type     uint32
-	padding1 [52]byte
+	Type uint32
+	_    [52]byte
 }
 
 type CommonEvent struct {
@@ -101,159 +101,138 @@ type CommonEvent struct {
 }
 
 type WindowEvent struct {
-	Type      uint32
-	Timestamp uint32
-	WindowID  uint32
-	Event     uint8
-	padding1  uint8
-	padding2  uint8
-	padding3  uint8
-	Data1     int32
-	Data2     int32
+	CommonEvent
+	WindowID uint32
+	Event    uint8
+	_        uint8
+	_        uint8
+	_        uint8
+	Data1    int32
+	Data2    int32
 }
 
 type KeyDownEvent struct {
-	Type      uint32
-	Timestamp uint32
-	WindowID  uint32
-	State     uint8
-	Repeat    uint8
-	padding1  uint8
-	padding2  uint8
-	Keysym    Keysym
+	CommonEvent
+	WindowID uint32
+	State    uint8
+	Repeat   uint8
+	_        uint8
+	_        uint8
+	Keysym   Keysym
 }
 
 type KeyUpEvent struct {
-	Type      uint32
-	Timestamp uint32
-	WindowID  uint32
-	State     uint8
-	Repeat    uint8
-	padding1  uint8
-	padding2  uint8
-	Keysym    Keysym
+	CommonEvent
+	WindowID uint32
+	State    uint8
+	Repeat   uint8
+	_        uint8
+	_        uint8
+	Keysym   Keysym
 }
 
 type TextEditingEvent struct {
-	Type      uint32
-	Timestamp uint32
-	WindowID  uint32
-	Text      [C.SDL_TEXTINPUTEVENT_TEXT_SIZE]byte
-	Start     int32
-	Length    int32
+	CommonEvent
+	WindowID uint32
+	Text     [C.SDL_TEXTINPUTEVENT_TEXT_SIZE]byte
+	Start    int32
+	Length   int32
 }
 
 type TextInputEvent struct {
-	Type      uint32
-	Timestamp uint32
-	WindowID  uint32
-	Text      [C.SDL_TEXTINPUTEVENT_TEXT_SIZE]byte
+	CommonEvent
+	WindowID uint32
+	Text     [C.SDL_TEXTINPUTEVENT_TEXT_SIZE]byte
 }
 
 type MouseMotionEvent struct {
-	Type      uint32
-	Timestamp uint32
-	WindowID  uint32
-	Which     uint32
-	State     uint32
-	X         int32
-	Y         int32
-	XRel      int32
-	YRel      int32
+	CommonEvent
+	WindowID uint32
+	Which    uint32
+	State    uint32
+	X        int32
+	Y        int32
+	XRel     int32
+	YRel     int32
 }
 
 type MouseButtonEvent struct {
-	Type      uint32
-	Timestamp uint32
-	WindowID  uint32
-	Which     uint32
-	Button    uint8
-	State     uint8
-	padding1  uint8
-	padding2  uint8
-	X         int32
-	Y         int32
+	CommonEvent
+	WindowID uint32
+	Which    uint32
+	Button   uint8
+	State    uint8
+	_        uint8
+	_        uint8
+	X        int32
+	Y        int32
 }
 
 type MouseWheelEvent struct {
-	Type      uint32
-	Timestamp uint32
-	WindowID  uint32
-	Which     uint32
-	X         int32
-	Y         int32
+	CommonEvent
+	WindowID uint32
+	Which    uint32
+	X        int32
+	Y        int32
 }
 
 type JoyAxisEvent struct {
-	Type      uint32
-	Timestamp uint32
-	Which     JoystickID
-	Axis      uint8
-	padding1  uint8
-	padding2  uint8
-	padding3  uint8
-	Value     int16
-	padding4  uint16
+	JoyDeviceEvent
+	Axis  uint8
+	_     uint8
+	_     uint8
+	_     uint8
+	Value int16
+	_     uint16
 }
 
 type JoyBallEvent struct {
-	Type      uint32
-	Timestamp uint32
-	Which     JoystickID
-	Ball      uint8
-	padding1  uint8
-	padding2  uint8
-	padding3  uint8
-	XRel      int16
-	YRel      int16
+	JoyDeviceEvent
+	Ball uint8
+	_    uint8
+	_    uint8
+	_    uint8
+	XRel int16
+	YRel int16
 }
 
 type JoyHatEvent struct {
-	Type      uint32
-	Timestamp uint32
-	Which     JoystickID
-	Hat       uint8
-	Value     uint8
-	padding1  uint8
-	padding2  uint8
+	JoyDeviceEvent
+	Hat   uint8
+	Value uint8
+	_     uint8
+	_     uint8
 }
 
 type JoyButtonEvent struct {
-	Type      uint32
-	Timestamp uint32
-	Which     JoystickID
-	Button    uint8
-	State     uint8
-	padding1  uint8
-	padding2  uint8
+	JoyDeviceEvent
+	Button uint8
+	State  uint8
+	_      uint8
+	_      uint8
 }
 
 type JoyDeviceEvent struct {
-	Type      uint32
-	Timestamp uint32
-	Which     JoystickID
+	CommonEvent
+	Which JoystickID
 }
 
 type ControllerAxisEvent struct {
-	Type      uint32
-	Timestamp uint32
-	Which     JoystickID
-	Axis      uint8
-	padding1  uint8
-	padding2  uint8
-	padding3  uint8
-	Value     int16
-	padding4  uint16
+	ControllerDeviceEvent
+	Axis  uint8
+	_     uint8
+	_     uint8
+	_     uint8
+	Value int16
+	_     uint16
 }
 
 type ControllerButtonEvent struct {
-	Type      uint32
-	Timestamp uint32
-	Which     JoystickID
-	Button    uint8
-	State     uint8
-	padding1  uint8
-	padding2  uint8
+	ControllerDeviceEvent
+	Button uint8
+	State  uint8
+	_      uint8
+	_      uint8
 }
 
 type ControllerDeviceEvent struct {
@@ -283,7 +262,7 @@ type MultiGestureEvent struct {
 	X          float32
 	Y          float32
 	NumFingers uint16
-	padding    uint16
+	_          uint16
 }
 
 type DollarGestureEvent struct {
